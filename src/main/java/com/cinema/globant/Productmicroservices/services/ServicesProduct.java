@@ -27,10 +27,6 @@ public class ServicesProduct implements IServices_Product {
         return repositoryProduct.save(product);
     }
 
-    public void modificarProduct(EntityProduct product){
-        repositoryProduct.save(product);
-    }
-
     public boolean deleteProduct(long id) {
        try {
            Optional<EntityProduct>product=getProductById(id);

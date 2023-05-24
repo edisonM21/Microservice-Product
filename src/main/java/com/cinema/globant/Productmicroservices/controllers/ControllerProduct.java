@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -19,6 +18,14 @@ public class ControllerProduct {
     private ResponseEntity<ArrayList<EntityProduct>> getAllProduct(){
         return new ResponseEntity(servicesProduct.getProduct(), HttpStatus.OK);
     }
+    /*
+        try {
+            return new ResponseEntity(servicesProduct.getProduct(), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace(System.out);
+        }
+        return null;
+    */
     @GetMapping("/{id}")
     private ResponseEntity<Optional<EntityProduct>> getProductByid(@PathVariable("id") long id){
         return new ResponseEntity(servicesProduct.getProductById(id),HttpStatus.OK) ;
@@ -27,11 +34,6 @@ public class ControllerProduct {
     @PostMapping
     public ResponseEntity<EntityProduct> saveProduct(@RequestBody EntityProduct product){
         return new ResponseEntity(servicesProduct.saveProduct(product),HttpStatus.CREATED);
-    }
-
-    @PutMapping
-    public void modificarProduct(@RequestBody EntityProduct product){
-        servicesProduct.modificarProduct(product);
     }
 
     @DeleteMapping
